@@ -4,10 +4,10 @@ class Point:
         self.y = None
 
     def set_x(self, x_coord):
-        self.x = x_coord
+        self.x = float(x_coord)
 
     def set_y(self, y_coord):
-        self.y = y_coord
+        self.y = float(y_coord)
 
     def set_coord(self, x_coord, y_coord):
         self.set_x(x_coord)
