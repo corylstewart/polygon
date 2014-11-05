@@ -23,4 +23,4 @@ class Point:
         return self.get_x(), self.get_y()
 
     def point_is_set(self):
-        return self.x and self.b
+        return self.x and self.y
