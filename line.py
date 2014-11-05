@@ -23,3 +23,6 @@ class Line:
     def get_line(self):
         return self.pointA.get_coord(), self.pointB.get_coord()
 
+    def line_is_set(self):
+        return self.pointA.point_is_set() and self.pointB.point_is_set()
+
