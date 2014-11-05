@@ -23,4 +23,7 @@ class Point:
         return self.get_x(), self.get_y()
 
     def point_is_set(self):
-        return self.x and self.y
+        if self.get_x() is None or self.get_y() is None:
+            return False
+        else:
+            return True
