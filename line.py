@@ -26,3 +26,12 @@ class Line:
     def line_is_set(self):
         return self.pointA.point_is_set() and self.pointB.point_is_set()
 
+    def slope(self):
+        y_diff = self.pointB.get_y() - self.pointA.get_y()
+        if y_diff == 0:
+            return float('inf')
+        x_diff = self.pointB.get_x() - self.pointA.get_x()
+        return x_diff/y_diff
+
+    def _does_line_overlap(self, other_line):
+        pass
