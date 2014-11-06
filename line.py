@@ -27,11 +27,22 @@ class Line:
         return self.point_a.point_is_set() and self.point_b.point_is_set()
 
     def slope(self):
-        y_diff = self.point_b.get_y() - self.point_a.get_y()
-        if y_diff == 0:
-            return float('inf')
         x_diff = self.point_b.get_x() - self.point_a.get_x()
-        return x_diff/y_diff
+        if x_diff == 0:
+            return float('inf')
+        y_diff = self.point_b.get_y() - self.point_a.get_y()
+        return y_diff/x_diff
+
+    def do_lines_intersect(self, other_line):
+        pass
+
+    def do_lines_share_point(self, other_line):
+        pass
 
     def _does_line_overlap(self, other_line):
         pass
+
+
+x = Line()
+x.set_line_by_coord(0, 0, 1, 0)
+print x.slope()
