@@ -27,3 +27,8 @@ class Point:
             return False
         else:
             return True
+
+    def points_are_equivalent(self, other_point):
+        same_x = self.get_x() == other_point.get_x()
+        same_y = self.get_y() == other_point.get_y()
+        return same_x and same_y
