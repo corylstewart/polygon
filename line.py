@@ -46,9 +46,13 @@ class Line:
         if self.lines_are_equivalent(other_line):
             return True
         if self.do_lines_share_point(other_line):
-            pass
+            if self.does_line_overlap(other_line):
+                return True
+            else:
+                return False
         else:
             pass
+        return None
 
     def lines_are_equivalent(self, other_line):
         return (self.point_a.points_are_equivalent(other_line.point_a) and
@@ -65,7 +69,7 @@ class Line:
     def do_lines_have_same_slope(self, other_line):
         return self.slope() == other_line.slop()
 
-    def is_point_on_line(self, point, epsilon=.005):
+    def is_point_on_line(self, point, epsilon=.00000005):
         if self.point_a.points_are_equivalent(point) or self.point_b.points_are_equivalent(point):
             return False
         if abs(self.cross_product(point)) > epsilon:
@@ -94,10 +98,21 @@ class Line:
             return False
         if self.length() < other_line.length():
             pass
+        if self.is_point_on_line(other_line.point_a):
+            return True
+        if self.is_point_on_line(other_line.point_b):
+            return True
+        if other_line.is_point_on_line(self.point_a):
+            return True
+        if other_line.is_point_on_line(self.point_b):
+            return True
+        return False
 
 
 x = Line()
 x.set_line_by_coord(0, 0, 1, 1)
 y = Line()
 y.set_line_by_coord(1, 1, 2, 2)
+print x.do_lines_intersect(y)
+y.set_line_by_coord(1, 1, .5, .5)
 print x.do_lines_intersect(y)
