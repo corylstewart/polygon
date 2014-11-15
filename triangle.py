@@ -34,3 +34,9 @@ class Triangle:
 
     def area_of_this_triangle(self):
         return self.area_of_a_triangle_by_points(self.point_a, self.point_b, self.point_c)
+
+    def is_point_within_triangle(self, point, err_tol=.00005):
+        area_of_sub_triangles = (self.area_of_a_triangle_by_points(point, self.point_b, self.point_c) +
+                                self.area_of_a_triangle_by_points(self.point_a, point, self.point_c) +
+                                self.area_of_a_triangle_by_points(self.point_a, self.point_b, point))
+        return abs(area_of_sub_triangles - self.area_of_this_triangle()) < err_tol
