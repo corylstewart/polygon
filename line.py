@@ -107,12 +107,3 @@ class Line:
         if other_line.is_point_on_line(self.point_b):
             return True
         return False
-
-
-x = Line()
-x.set_line_by_coord(0, 0, 1, 1)
-y = Line()
-y.set_line_by_coord(1, 1, 2, 2)
-print x.do_lines_intersect(y)
-y.set_line_by_coord(1, 1, .5, .5)
-print x.do_lines_intersect(y)

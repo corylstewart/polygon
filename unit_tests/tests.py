@@ -1,8 +1,11 @@
 __author__ = 'cory'
-from line import Line
-from point import Point
-from triangle import Triangle
 
+import point_unit_test
+import line_unit_test
+
+
+
+'''
 t = Triangle()
 t.set_point_by_coord(0,0,0,1,1,0)
 for point in t.get_points():
@@ -14,4 +17,6 @@ print t.is_point_within_triangle(point)
 point.set_coord(0,0)
 print t.is_point_within_triangle(point)
 point.set_coord(-.1,-.1)
-print t.is_point_within_triangle(point)
+print t.is_point_within_triangle(point)'''
+
+print 'all tests complete'
