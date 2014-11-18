@@ -23,6 +23,10 @@ class Line:
         return self.point_a.get_coord(), self.point_b.get_coord()
 
     def line_is_set(self):
+        if self.point_a is None or self.point_b is None:
+            return False
+        if self.point_a.points_are_equivalent(self.point_b):
+            return False
         return self.point_a.point_is_set() and self.point_b.point_is_set()
 
     def x_diff(self):
