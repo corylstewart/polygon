@@ -87,3 +87,4 @@ t = poly.make_triangles()
 for b in t:
     for p in b.get_points():
         print p.get_coord()
+        
