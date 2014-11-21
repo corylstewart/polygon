@@ -10,30 +10,33 @@ class Polygon:
         self.points_list = []
         self.triangles = None
 
-    def add_point(self, point):
-        self.points_list.append(point)
+    def add_point(self, point_p):
+        self.points_list.append(point_p)
 
     def add_point_by_coord(self, x, y):
-        point = Point()
-        point.set_coord(x,y)
-        self.add_point(point)
+        point_p = Point()
+        point_p.set_coord(x, y)
+        self.add_point(point_p)
 
     def add_points_by_point_list(self, points_list):
-        for point in points_list:
-            self.points_list.append(point)
+        for p in points_list:
+            self.points_list.append(p)
 
     def polygon_is_closed(self):
         return self.points_list[0].points_are_equivalent(self.points_list[-1])
 
     def close_polygon(self):
         if not self.polygon_is_closed():
-            self.points_list.append(self.points_list[0])
+            point_p = Point()
+            point_p.set_coord(self.points_list[0].get_x(),
+                              self.points_list[0].get_y())
+            self.points_list.append(point_p)
 
     def get_points(self):
         return self.points_list
 
     def is_valid_polygon(self):
-        point = Point()
+        point_p = Point()
         if len(self.points_list) < 4:
             return False
         elif not self.points_list[0].points_are_equivalent(self.points_list[-1]):
@@ -42,8 +45,8 @@ class Polygon:
     def make_triangles(self):
         polyline = []
         triangles = []
-        for point in self.points_list:
-            polyline.append(point.get_coord())
+        for p in self.points_list:
+            polyline.append(p.get_coord())
         this_polygon = None
         for i in range(5):
             try:
@@ -65,24 +68,22 @@ class Polygon:
                                               point_b,
                                               point_c)
             triangles.append(this_triangle)
-        for triangle in triangles:
-            ps = triangle.get_points()
-            for p in ps:
-                print(p.get_coord())
+        return triangles
 p1 = Point()
-p1.set_coord(0,0)
+p1.set_coord(0, 0)
 p2 = Point()
-p2.set_coord(1,0)
+p2.set_coord(1, 0)
 p3 = Point()
-p3.set_coord(1,1)
+p3.set_coord(1, 1)
 p4 = Point()
-p4.set_coord(0,1)
+p4.set_coord(0, 1)
 p5 = Point()
-p5.set_coord(0,0)
-points = [p1,p2,p3,p4]
+p5.set_coord(0, 0)
+points = [p1, p2, p3, p4]
 poly = Polygon()
 poly.add_points_by_point_list(points)
-print poly.polygon_is_closed()
 poly.close_polygon()
-print poly.polygon_is_closed()
-poly.make_triangles()
+t = poly.make_triangles()
+for b in t:
+    for p in b.get_points():
+        print p.get_coord()
